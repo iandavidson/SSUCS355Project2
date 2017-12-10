@@ -1,0 +1,28 @@
+<h1>Navigation</h1>
+<a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
+<a href="/account/all">Accounts </a>
+
+<br>
+
+<h1>Breakdown of total donations by account:</h1>
+<table>
+    <thead>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Total $ Donated</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% response.forEach(function(i) { %>
+    <tr>
+        <td><%= i.first_name%></td>
+        <td><%= i.last_name %></td>
+        <td><%= i.sum %></td>
+
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+
+

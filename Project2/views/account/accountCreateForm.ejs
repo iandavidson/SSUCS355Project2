@@ -1,0 +1,14 @@
+<h1>Navagation</h1>
+<a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
+<a href="/account/all">Accounts </a>
+<br>
+
+<h2>Account Create Form: </h2>
+<p>Enter Data: First Name, Last Name, Phone Number, Email Address</p>
+<form action="/account/addAccount" method="POST">
+    <input type="'text" name='account[first_name]'>
+    <input type="'text" name='account[last_name]'>
+    <input type="'text" name='account[phone_number]'>
+    <input type="'text" name='account[email]'>
+    <button type="submit">Submit Record</button>
+</form>

@@ -1,0 +1,82 @@
+<h1>Navigation</h1>
+<a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
+<a href="/account/all">Accounts </a>
+<br>
+
+<h1>Organization Backers </h1>
+<p>These accounts have already made contributions:</p>
+<table>
+    <thead>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Phone Number</td>
+        <td>Email</td>
+        <td>Choose Account</td>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% response.Contributor.forEach(function(i) { %>
+    <tr>
+        <td><%= i.first_name%></td>
+        <td><%= i.last_name %></td>
+        <td><%= i.phone_number %></td>
+        <td><%= i.email %></td>
+        <td><a href="/donation/add/<%=i.account_id%>">Add donation for account</a></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+
+<a href="/donation/viewSum">Click to see total contributions broken down by user</a>
+
+<p>These accounts havent made donations before:</p>
+<table>
+    <thead>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Phone Number</td>
+        <td>Choose Account</td>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% response.Noncontributor.forEach(function(i) { %>
+    <tr>
+        <td><%= i.first_name%></td>
+        <td><%= i.last_name %></td>
+        <td><%= i.phone_number %></td>
+        <td><%= i.email %></td>
+        <td><a href="/donation/add/<%=i.account_id%>">Add donation for account</a></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+
+<h2>Historical BreakDown of Donation Records:</h2>
+<table>
+    <thead>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Phone Number</td>
+        <td>Email</td>
+        <td>Donation Time</td>
+        <td>Amount</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% response.Account.forEach(function(i) { %>
+    <tr>
+        <td><%= i.first_name%></td>
+        <td><%= i.last_name %></td>
+        <td><%= i.phone_number %></td>
+        <td><%= i.email %></td>
+        <td><%= i.donation_time %></td>
+        <td><%= i.amount %></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>

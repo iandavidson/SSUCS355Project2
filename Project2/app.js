@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var account = require('./routes/account_routes');
 var donation = require('./routes/donation_routes');
-
+var volunteer = require('./routes/volunteer_routes');
 
 var app = express();
 
@@ -23,13 +23,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/account', account);
 app.use('/donation', donation);
-
+app.use('/volunteer', volunteer);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

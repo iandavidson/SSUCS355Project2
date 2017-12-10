@@ -1,0 +1,28 @@
+<h1>Navigation</h1>
+<a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
+<a href="/account/all">Accounts </a>
+<br>
+<br>
+
+<table>
+    <thead>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Phone Number</td>
+        <td>Email</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% response.forEach(function(i) { %>
+    <tr>
+        <td><%= i.first_name%></td>
+        <td><%= i.last_name %></td>
+        <td><%= i.phone_number %></td>
+        <td><%= i.email %></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+<br>
+<a href="/account/createForm">Create New Account</a>

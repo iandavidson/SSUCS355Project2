@@ -1,0 +1,12 @@
+<h1>Navigation</h1>
+<a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
+<a href="/account/all">Accounts </a>
+
+
+<h2>Make Donation: </h2>
+<p>Enter Data in following order: Time donation made (format ex. '2017-10-18 16:34:35') , Amount Donated </p>
+<form action="/donation/add/<%=response%>" method="POST">
+    <input type="'text" name='donation[donation_time]'>
+    <input type="'text" name='donation[amount]'>
+    <button type="submit">Submit Record</button>
+</form>
