@@ -1,0 +1,28 @@
+<%- include("../includes/header.ejs", {title:"Add New Company"}); %>
+<h1>Navigation</h1>
+<a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
+<a href="/account/all">Accounts </a>
+<br>
+
+<form action="/volunteer/addSchedule/<%=response.account_id%>" method="POST">
+    <br>
+    <select id="event_location_id" name="event_location_id">
+        <% for(var i=0; response.event.length > i; i++ ) { %>
+        <option value="<%= response.event[i].event_location_id %>"><%= response.event[i].description %></option>
+        <% } %>
+    </select>
+    <br>
+    <br>
+    <p> example of Time format is : '2017-10-18 16:30:35' </p>
+    Time Started: <input id="time_started" name="time_started" type="text" />
+    <br />
+    <br>
+    Time Finshed: <input id="time_ended" name="time_ended" type="text" />
+    <br />
+    <br>
+    <input type="submit" />
+
+</form>
+
+
+<%- include("../includes/footer.ejs"); %>

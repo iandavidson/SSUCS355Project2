@@ -11,12 +11,13 @@
         <td>Last Name</td>
         <td>Phone Number</td>
         <td>Email</td>
+
     </tr>
     </thead>
     <tbody>
     <% response.forEach(function(i) { %>
     <tr>
-        <td><%= i.first_name%></td>
+        <td><a href="/account/viewBy/<%= i.account_id%>"> <%=i.first_name%></a></td>
         <td><%= i.last_name %></td>
         <td><%= i.phone_number %></td>
         <td><%= i.email %></td>

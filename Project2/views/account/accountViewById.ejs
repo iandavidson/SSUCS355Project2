@@ -1,0 +1,57 @@
+<h1>Navigation</h1>
+<a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
+<a href="/account/all">Accounts </a>
+<br>
+<br>
+
+<table>
+    <thead>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+        <td>Phone Number</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% object.account.forEach(function(i) { %>
+    <tr>
+        <td><%= i.first_name%></td>
+        <td><%= i.last_name %></td>
+        <td><%= i.email %></td>
+        <td><%= i.phone_number %></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+<br>
+<br>
+<table>
+    <thead>
+    <tr>
+        <td>Number Of Times Volunteered: </td>
+    </tr>
+    </thead>
+    <tbody>
+    <% object.activity.forEach(function(i) { %>
+    <tr>
+        <td><%= i.num_activity%></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+<br>
+<table>
+    <thead>
+    <tr>
+        <td>Total Amount Contributed to Organization</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% object.donation.forEach(function(i) { %>
+    <tr>
+        <td><%= i.sum%></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>

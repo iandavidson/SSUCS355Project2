@@ -1,0 +1,75 @@
+<h1>Volunteer View All</h1>
+<br>
+<h1>Navagation</h1>
+<a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
+<a href="/account/all">Accounts </a>
+<br>
+
+<h2>Possible Volunteering Activities:</h2>
+<table>
+    <thead>
+    <tr>
+        <td>Description</td>
+        <td>Street</td>
+        <td>Zip Code</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% response.event.forEach(function(i) { %>
+    <tr>
+        <td><%= i.description%></td>
+        <td><%= i.street %></td>
+        <td><%= i.zipcode %></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+<br>
+<a href="/volunteer/addEvent">Add Event</a>
+
+<br>
+<h2>Volunteer Schedule:</h2>
+<br>
+<table>
+    <thead>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Time Started</td>
+        <td>Time Ended</td>
+        <td>Activity Description</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% response.volunteer.forEach(function(i) { %>
+    <tr>
+        <td><%= i.first_name%></td>
+        <td><%= i.last_name %></td>
+        <td><%= i.time_started %></td>
+        <td><%= i.time_ended %></td>
+        <td><%= i.description %></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+<br>
+
+<h2>Accounts, click the link to create a volunteer record for the account:</h2>
+<table>
+    <thead>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Choose Account</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% response.account.forEach(function(i) { %>
+    <tr>
+        <td><%= i.first_name%></td>
+        <td><%= i.last_name %></td>
+        <td><a href="/volunteer/addSchedule/<%=i.account_id%>">Add Volunteering Session</a></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
