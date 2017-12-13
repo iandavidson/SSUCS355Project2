@@ -1,3 +1,5 @@
+<%- include("../includes/header.ejs", {title:"Add New Event Entry"}); %>
+
 <h1>Navigation</h1>
 <a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
 <a href="/account/all">Accounts </a>
@@ -11,3 +13,5 @@
     <input type="'text" name='Event[zipcode]'>
     <button type="submit">Submit Record</button>
 </form>
+
+<%- include("../includes/footer.ejs"); %>

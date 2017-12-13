@@ -72,7 +72,7 @@ router.post('/add/:id', function(req, res){//will actually add info
             console.log("Donation broke");
             res.send(err);
         }else{
-            res.send("Donation Insert Successful");
+            res.render("donation/donationSuccessful");
         }
 
     })

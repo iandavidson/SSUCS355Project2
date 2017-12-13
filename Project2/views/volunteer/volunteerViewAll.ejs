@@ -1,3 +1,4 @@
+<%- include("../includes/header.ejs", {title:"View All Volunteers"}); %>
 <h1>Volunteer View All</h1>
 <br>
 <h1>Navagation</h1>
@@ -12,6 +13,7 @@
         <td>Description</td>
         <td>Street</td>
         <td>Zip Code</td>
+        <td> </td>
     </tr>
     </thead>
     <tbody>
@@ -20,6 +22,7 @@
         <td><%= i.description%></td>
         <td><%= i.street %></td>
         <td><%= i.zipcode %></td>
+        <td><a href="/volunteer/update/<%=i.event_location_id%>">Edit Info</a> </td>
     </tr>
     <% }); %>
     </tbody>
@@ -73,3 +76,5 @@
     <% }); %>
     </tbody>
 </table>
+
+<%- include("../includes/footer.ejs"); %>

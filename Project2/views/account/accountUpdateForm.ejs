@@ -1,10 +1,12 @@
-<%- include("../includes/header.ejs", {title:"View All Accounts"}); %>
-
+<%- include("../includes/header.ejs", {title:"Update Account Info"}); %>
 <h1>Navigation</h1>
 <a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
 <a href="/account/all">Accounts </a>
 <br>
 <br>
+
+
+<h3>Current Information</h3>
 
 <table>
     <thead>
@@ -13,23 +15,32 @@
         <td>Last Name</td>
         <td>Phone Number</td>
         <td>Email</td>
-        <td> </td>
-
     </tr>
     </thead>
     <tbody>
-    <% response.forEach(function(i) { %>
+    <% response.account.forEach(function(i) { %>
     <tr>
-        <td><a href="/account/viewBy/<%= i.account_id%>"> <%=i.first_name%></a></td>
+        <td> <%=i.first_name%></td>
         <td><%= i.last_name %></td>
         <td><%= i.phone_number %></td>
         <td><%= i.email %></td>
-        <td><a href="/account/update/<%= i.account_id%>">Edit</a></td>
     </tr>
     <% }); %>
     </tbody>
 </table>
+
+
+
 <br>
-<a href="/account/createForm">Create New Account</a>
+
+<h3>Enter Updated Info: First, Last Name, Phone number, Email</h3>
+<form action="/account/update/<%=response.account_id%>" method="POST">
+
+    <input type="'text" name='account[first_name]'>
+    <input type="'text" name='account[last_name]'>
+    <input type="'text" name='account[phone_number]'>
+    <input type="'text" name='account[email]'>
+    <button type="submit">Submit Record</button>
+</form>
 
 <%- include("../includes/footer.ejs"); %>

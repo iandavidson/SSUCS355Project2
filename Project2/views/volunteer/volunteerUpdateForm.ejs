@@ -1,0 +1,44 @@
+<%- include("../includes/header.ejs", {title:"Update Volunteer Event"}); %>
+<h1>Navigation</h1>
+<a href="/">Home  |  </a> <a href="/about">About  |  </a> <a href="/donation/all">Donations  |  </a> <a href="/volunteer/getAll">Volunteering  |  </a>
+<a href="/account/all">Accounts </a>
+<br>
+<br>
+
+
+<h3>Current Information</h3>
+
+<table>
+    <thead>
+    <tr>
+        <td>Description</td>
+        <td>Street Address</td>
+        <td>Zip Code</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% response.event.forEach(function(i) { %>
+    <tr>
+        <td> <%=i.description%></td>
+        <td><%= i.street %></td>
+        <td><%= i.zipcode %></td>
+    </tr>
+    <% }); %>
+    </tbody>
+</table>
+
+
+
+<br>
+
+<h3>Enter Updated Info: Description, Street Address, Zip Code</h3>
+<form action="/volunteer/update/<%=response.id%>" method="POST">
+
+    <input type="'text" name='event[description]'>
+    <input type="'text" name='event[street]'>
+    <input type="'text" name='event[zipcode]'>
+
+    <button type="submit">Submit Record</button>
+</form>
+
+<%- include("../includes/footer.ejs"); %>

@@ -45,6 +45,16 @@ exports.getAllById = function(id, callback){
     })
 };
 
+exports.updateById = function(obj, callback){
+    var query = "update Account set first_name = '" + obj.first + "', last_name = '" + obj.last + "', email = '" +
+        obj.email + "', phone_number = '" + obj.phone + "' where account_id = " + obj.id + ";";
+
+    console.log("query: " + query);
+    connection.query(query, function(err, res){
+        callback(err, res);
+    })
+};
+
 exports.getActivitiesById = function(id, callback){
     var query = "Select account_id, fn_account_getActivities(account_id) as num_activity from Account where account_id = " + id + ";";
     console.log("query: " + query);

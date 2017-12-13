@@ -51,7 +51,34 @@ router.post('/addEvent', function(req, res){
             console.log("insert broke");
             res.send(err1);
         }else{
-            res.send("Insert Successful")
+            res.render('volunteer/volunteerSuccessful');
+        }
+    })
+});
+
+
+router.get('/update/:id', function(req, res){
+    var id = req.params.id;
+    volunteer_dal.getEventId(id, function(err1, event){
+        var obj = {id: id,
+                    event: event};
+        res.render('volunteer/volunteerUpdateForm', {response: obj} );
+
+    })
+})
+
+router.post('/update/:id', function(req, res){
+    var id = req.params.id;
+    var obj = {id: id,
+                description: req.body.event.description,
+                street: req.body.event.street,
+                zipcode: req.body.event.zipcode};
+    volunteer_dal.updateEvent(obj, function(err, res1){
+        if(err){
+            console.log("event update broke");
+            res.send(err);
+        }else{
+            res.render('volunteer/volunteerSuccessful');
         }
     })
 });
@@ -65,15 +92,13 @@ router.get('/addSchedule/:id', function(req, res) { //id refers to account_id
             res.send(err1);
         }else{
             var obj = {event: event,
-                        account_id: id,};
+                        account_id: id};
             res.render('volunteer/volunteerAddSchedule', {response: obj});
         }
     })
 });
 //
 //});
-
-
 
 //
 router.post('/addSchedule/:id', function(req, res){
@@ -87,7 +112,7 @@ router.post('/addSchedule/:id', function(req, res){
             console.log("insert into Vol_sched broke");
             res.send(err1);
         }else{
-            res.send("insert successful");
+            res.render('volunteer/volunteerSuccessful');
         }
     })
 });

@@ -22,10 +22,47 @@ router.post('/addAccount', function(req,res1){
         if(err1){
             res1.send("insert did not work :(");
         }else{
-            res1.send("insert successful");//make it link to success.ejs file
+            res1.render('account/accountSuccessful');
+            //res1.send("insert successful");//make it link to success.ejs file
         }
     })
 });
+
+router.get('/update/:id', function(req, res){
+    var id = req.params.id;
+    account_dal.getAllById(id, function(err2, res2){
+        if(err2){
+            console.log("error thrown creating updateform");
+            res.send(err2);
+        }else{
+            console.log(res2);
+            var obj = { account_id: id,
+                        account: res2};
+            console.log(obj);
+            res.render('account/accountUpdateForm', {response: obj});
+        }
+    })
+})
+
+//post req. same route
+router.post('/update/:id', function(req, res) {
+    var id = req.params.id;
+    var obj = { id: id,
+                first: req.body.account.first_name,
+                last: req.body.account.last_name,
+                email: req.body.account.email,
+                phone: req.body.account.phone_number };
+    console.log(obj);
+    account_dal.updateById(obj, function(err1, res1){
+        if(err1){
+            console.log("account update broke");
+            res.send(err1);
+        }else{
+            res.render('account/accountSuccessful');
+        }
+    })
+})
+
 
 //usage of view and function
 router.get('/viewBy/:id', function(req, res){  //gets the total amount donated, and total time attending volunteer events

@@ -44,4 +44,24 @@ exports.insertSchedule = function(obj, callback){
     })
 };
 
+exports.getEventId = function(id, callback){
+    var query = "select * from Volunteer_Event where event_location_id = " + id + ";"
+    console.log(query);
+    connection.query(query, function(err, res){
+        callback(err, res);
+    })
+};
+
+
+exports.updateEvent = function(obj, callback){
+    var query = "update Volunteer_Event set description = '" + obj.description + "', street = '" + obj.street +
+        "', zipcode = " + obj.zipcode + " where event_location_id = " + obj.id + ";";
+    console.log(query);
+    connection.query(query, function(err, res){
+        callback(err, res);
+    })
+};
+
+
+
 //select * from GetAllEvents; // will get columns [description, first_name, last_name], use for view all Schedule.
